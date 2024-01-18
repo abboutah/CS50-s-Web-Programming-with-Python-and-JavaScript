@@ -19,5 +19,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', include("hello.urls"))
+    path('hello/', include("hello.urls")), #add page hello from hello directory and all urls from this directory
+    path('newyear/', include("newyear.urls")) 
 ]
