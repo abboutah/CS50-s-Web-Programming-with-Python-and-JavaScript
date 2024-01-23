@@ -5,4 +5,4 @@ INSERT INTO flights (origin, destination, duration) VALUES ("Tunis", "London",  
 INSERT INTO flights (origin, destination, duration) VALUES ("Beirut", "Istanbul", 120 );
 INSERT INTO flights (origin, destination, duration) VALUES ("Los Angeles", "New York",  320);
 
-aessakou | ynuiga | aniouar | enja
+aessakou | ynuiga | aniouar
