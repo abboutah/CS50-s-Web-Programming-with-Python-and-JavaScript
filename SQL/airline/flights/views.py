@@ -16,8 +16,13 @@ def flight(request, flight_id):
         "non_passengers": Passenger.objects.exclude(flights=flight).all()
     })
 def book(request, flight_id):
+    # For a post request, add a new flight
     if request.method == "POST":
+        # Accessing the flight
         flight = Flight.objects.get(pk=flight_id)
+         # Finding the passenger id from the submitted form data
         passenger = Passenger.objects.get(pk=int(request.POST["passenger"]))
+         # Add passenger to the flight
         passenger.flights.add(flight)
+        # Redirect user to flight page
         return HttpResponseRedirect(reverse("flight", args=(flight.id,)))
