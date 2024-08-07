@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Colors</title>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function(){
+                // // change font color to red
+                // document.querySelector('#red').onclick = function(){
+                //     document.querySelector('#hello').style.color = 'red';
+                // };
+                // // change font color to blue
+                // document.querySelector('#blue').onclick = function(){
+                //     document.querySelector('#hello').style.color = 'blue';
+                // };
+                // // change font color to green
+                // document.querySelector('#green').onclick = function(){
+                //     document.querySelector('#hello').style.color = 'green';
+                
+                // get all button as a nodelist and apllies foreach element
+                document.querySelectorAll('button').forEach(function(button) {
+                    button.onclick = function() {
+                        document.querySelector("#hello").style.color = button.dataset.color;
+                    }
+                })
+
+
+            })
+
+        </script>
+    </head>
+    <body>
+        <h1 id="hello">Hello</h1>
+        <!---data-color attribute to access that data using dataset in JS-->
+        <button data-color="red">Red</button>
+        <button data-color="blue">Blue</button>
+        <button data-color="green">Green</button>
+    </body>
+</html>
