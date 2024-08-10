@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Animate</title>
+        <style>
+
+            /* where should the elemeen start/end, what should its style  */
+            @keyframes grow {
+                /* move from corner to center
+                from {
+                    font-size: 20px;
+                }
+                to {
+                    font-size: 100px;
+                } */
+
+                /* move from left to right
+                from {
+                    left: 0%;
+                }
+                to {
+                    left: 50%;
+                } */
+
+                /* move from left to right and return */
+                0% {
+                    left: 0%;
+                }
+                50% {
+                    left: 50%;
+                }
+                100% {
+                    left: 0%;
+                }
+
+            }
+            h1 {
+                position: relative; /* to other other elements */
+                animation-name: grow;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+                animation-iteration-count: infinite; /* repeat */
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Find heading
+                const h1 = document.querySelector('h1');
+                // pause the animation 
+                h1.style.animationPlayState = 'paused';
+                //Wait for button to be clicked
+                document.querySelector('button').onclick = () => {
+                    //if animation is currently paused, begin playing it
+                    if(h1.style.animationPlayState === 'paused'){
+                        h1.style.animationPlayState = 'running'
+                    }
+                    //otherwise, pause the animation
+                    else {
+                        h1.style.animationPlayState = 'paused'   
+                    }
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <button>Click Here!</button>
+        <h1>Welcome!</h1>
+    </body>
+</html>

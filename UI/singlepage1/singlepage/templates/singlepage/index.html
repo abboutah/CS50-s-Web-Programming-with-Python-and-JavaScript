@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Single Page</title>
+        <style>
+        </style>
+        <script>
+
+            // shows given section
+            function showSection(section) {
+                
+                // Find section text from server
+                fetch(`/sections/${section}`)
+
+                // convert the response into plain text
+                .then(response => response.text())
+
+                
+                .then(text => {
+
+                    // log text and display on page
+                    console.log(text);
+
+                    // update the div by setting it equal to that text
+                    document.querySelector('#content').innerHTML = text;
+                });
+            }
+
+            // apply the function upward for each button
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('button').forEach(button => {
+                    button.onclick = function() {
+                        showSection(this.dataset.section);
+                    };
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Hello!</h1>
+        <button data-section="1">Section 1</button>
+        <button data-section="2">Section 2</button>
+        <button data-section="3">Section 3</button>
+        <div id="content">
+        </div>
+    </body>
+</html>
