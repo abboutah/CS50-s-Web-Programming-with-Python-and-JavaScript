@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- React: Defines components and their behavior -->
+        <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <!--  ReactDOM: Takes React components and inserts them into the DOM-->
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        <!-- Babel: Translates from JSX, the language in which we’ll write in React, to plain JavaScript that our browsers can interpret. JSX is very similar to JavaScript, but with some additional features, including the ability to represent HTML inside of our code. -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <title>React</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <!-- translate the script using babel -->
+        <script type="text/babel">
+            
+            
+
+            // React component
+            function App() {
+
+                // const[num1, setNum1] = React.useState(1);
+                // const[num2, setNum2] = React.useState(2);
+                const [state, setState] = React.useState({
+                    num1: 4,
+                    num2: 12,
+                    response: "",
+                    score: 0
+                });
+                
+                function inputKeyPress(event){
+                    if (event.key === "Enter"){
+                        const answer = parseInt(state.response);
+                        console.log("yes");
+                        // User got question right
+                        if (state.num1 + state.num2 === answer){
+                            setState({
+                                ...state,
+                                score: state.score + 1
+                            });
+                        } 
+                        // User got question wrong
+                        else {
+                            setState({
+                                ...state,
+                                score: state.score - 1
+                            });
+
+                        }
+                    }
+                }
+
+                function updateResponse(event) {
+                    // update only the response
+                    setState({
+                        ...state,
+                        response: event.target.value
+                    });
+                }
+
+               return (
+                <div>
+                    <div> {state.num1} + {state.num2}</div>
+                    <input onKeyPress={inputKeyPress} onChange={updateResponse} value={state.response} />
+                    <div>Score: {state.score}</div>
+                </div>
+               );
+            }   
+
+            // 1:Component to render, 2:Where should be rendered
+            ReactDOM.render(<App />, document.querySelector("#app"));
+        </script>
+    </body>
+</html>

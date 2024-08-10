@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- React: Defines components and their behavior -->
+        <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <!--  ReactDOM: Takes React components and inserts them into the DOM-->
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        <!-- Babel: Translates from JSX, the language in which we’ll write in React, to plain JavaScript that our browsers can interpret. JSX is very similar to JavaScript, but with some additional features, including the ability to represent HTML inside of our code. -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <title>React</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <!-- translate the script using babel -->
+        <script type="text/babel">
+            
+            
+
+            // React component
+            function App() {
+                
+                //Add state to our component
+                // the function(init value) 
+                // return 1:var represent the state
+                // 2: function to update the state
+                const [count, setCount] = React.useState(0);
+                
+                function updateCount() {
+                    setCount(count + 1)
+                }
+
+                return (
+                    <div>
+                       <div>{count}</div>
+                       <button onClick={updateCount}>Count</button>
+                    </div>
+                );
+            }   
+
+            // 1:Component to render, 2:Where should be rendered
+            ReactDOM.render(<App />, document.querySelector("#app"));
+        </script>
+    </body>
+</html>
